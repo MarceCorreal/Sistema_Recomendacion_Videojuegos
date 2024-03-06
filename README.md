@@ -21,3 +21,8 @@ El proyecto se desarrolla en VPython - VisualCode Studio
 El repositorio de Henry con las consignas se encentran en: https://github.com/soyHenry/PI_ML_OPS/blob/FT/Readme.md
 
 </p>
+
+
+## Objetivos del Proyecto
+
+
