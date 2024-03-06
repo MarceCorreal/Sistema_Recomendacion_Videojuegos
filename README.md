@@ -4,9 +4,9 @@
 
 <h1 align="center"><b>PROYECTO INDIVIDUAL 1 - MACHINE LEARNING - DPT07</b></h1>
 
+<h1 align="center"><b>Sistemas de Recomendación de Videojuegos para usuarios plataforma STEAM</b></h1>
 
-
-
+## Autor: Marcela Correal García
 
 ## Generalidades del Repositorio
 
