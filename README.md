@@ -3,5 +3,4 @@
 </p>
 
 
-# PI1_ML
-Proyecto Individual1 de Machine Learning - DPT07
+# PROYECTO INDIVIDUAL 1 - MACHINE LEARNING - DPT07
