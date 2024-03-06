@@ -1,9 +1,13 @@
 <p align="center">
-  <img src="https://github.com/MarceCorreal/PI1_ML/blob/main/Assets/logo_steam%20(1).svg" />
+<img src="https://github.com/MarceCorreal/PI1_ML/blob/main/Assets/logo_steam%20(1).svg" />
+</p>
+
+<p align="center">
+  <b><h1>PROYECTO INDIVIDUAL 1 - MACHINE LEARNING - DPT07</h1></b>
 </p>
 
 
-# PROYECTO INDIVIDUAL 1 - MACHINE LEARNING - DPT07
+
 
 
 ## Generalidades del Repositorio
