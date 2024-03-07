@@ -72,28 +72,28 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
 
     
  * __User_Reviews__: Inicialmente se revisan las características de los datos en plano y se puede observar que el archivo Json que incluye la carpeta se llama australian_user_reviews
-Tambien parece contener un diccionario pues inicia con corchetes y tiene : lo que indica que incluye claves.
-Lo primero es descomprimir el archivo de la misma forma que se hizo con el anterior.
-
-En este caso lo que se hizo fué desarrollar una fórmula para que leyera los archivos que son cadenas en este caso y recorrerlos par apasar los datos a la lista que se creo. 
-También se utilizó la función ast_literal
-
-al abrirlo en Pandas verifico que es un dataframe con 3 columnas referente al usuario, el id, la url y los reviews que hay que explodar por que e ve que vienen anidadas.
-
-Como en los otros casos, los pasos operativos, se encuentran explicados el detalle en el notebook.
-Para desanidar la ultima columna se utilizó explide y normalize que independiza la columna y eso hace que se puede volver a desanidar
-
-Posteriormente, se reindexa la columna explode y se vuelven a juntar mediante un merge para tener un solo dataframe final con toda la información 
-
-En este momento, cambio el nombre del archivo por df_user_reviews_sentimiento, dado que incluiré una columna de sentimiento tal como indica la consigna.
-
-Este data frame cuenta con las siguientes características:
+ Tambien parece contener un diccionario pues inicia con corchetes y tiene : lo que indica que incluye claves.
+ Lo primero es descomprimir el archivo de la misma forma que se hizo con el anterior.
+ 
+ En este caso lo que se hizo fué desarrollar una fórmula para que leyera los archivos que son cadenas en este caso y recorrerlos par apasar los datos a la lista que se creo. 
+ También se utilizó la función ast_literal
+ 
+ al abrirlo en Pandas verifico que es un dataframe con 3 columnas referente al usuario, el id, la url y los reviews que hay que explodar por que e ve que vienen anidadas.
+ 
+ Como en los otros casos, los pasos operativos, se encuentran explicados el detalle en el notebook.
+ Para desanidar la ultima columna se utilizó explide y normalize que independiza la columna y eso hace que se puede volver a desanidar
+ 
+ Posteriormente, se reindexa la columna explode y se vuelven a juntar mediante un merge para tener un solo dataframe final con toda la información 
+ 
+ En este momento, cambio el nombre del archivo por df_user_reviews_sentimiento, dado que incluiré una columna de sentimiento tal como indica la consigna.
+ 
+ Este data frame cuenta con las siguientes características:
 
   Tipo: diccionario
   
-  Size: 120.445 x 13 despues de eliminan NAN 22.530
+  Size: 25798x3 antes de desanidar
   
-  Tamaño: 113 MB
+  Tamaño: 1.8+ MB
 
 En el dataset user_reviews se incluyen reseñas de juegos hechos por distintos usuarios. Debes crear la columna 'sentiment_analysis' 
 aplicando análisis de sentimiento con NLP con la siguiente escala: debe tomar el valor '0' si es malo, '1' si es neutral 
@@ -102,25 +102,25 @@ de machine learning y el análisis de datos. De no ser posible este análisis po
 
 Para lo anterior se plició  df['Sentimiento'] = df['Texto'].apply(analizar_sentimiento)
 
- * __Users_Items__: 
-
-
-
-
+ * __Users_Items__: Esta carpeta comprimida incluye un archivo llamado australian_users_items.
+   También en codificación UTF-8
+   
 Este data frame cuenta con las siguientes características:
 
   Tipo: diccionario
   
-  Size: 120.445 x 13 despues de eliminan NAN 22.530
+  Size: 441.550 x 5 
   
-  Tamaño: 113 MB
+  Tamaño: 3.4 MB
 
-En el dataset user_reviews se incluyen reseñas de juegos hechos por distintos usuarios. Debes crear la columna 'sentiment_analysis' 
-aplicando análisis de sentimiento con NLP con la siguiente escala: debe tomar el valor '0' si es malo, '1' si es neutral 
-y '2' si es positivo. Esta nueva columna debe reemplazar la de user_reviews.review para facilitar el trabajo de los modelos 
-de machine learning y el análisis de datos. De no ser posible este análisis por estar ausente la reseña escrita, debe tomar el valor de 1
+En este caso, después de descomprimir tambien fué necesario crear una lista y recorrer la información para llanearla, espte proceso se tomó mucho tiempo por el tamaño
 
-Para lo anterior se plició  df['Sentimiento'] = df['Texto'].apply(analizar_sentimiento)
+LA información esta en 5 columnas referente a la información de los usuarios y sus referencias.
+La quinta columna se debe desanidar con eol mismo procedimiento: explode, normalize, indexar y merge
+
+
+
+
 
 
 
