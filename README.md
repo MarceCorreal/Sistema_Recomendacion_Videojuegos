@@ -39,9 +39,9 @@ Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que in
 
 ### EDA & ETL
 
-Se recibieron 3 carpetas,a cada uno se le hizo un EDA y ETL paralelamente, pues entender los datos y transformarlos paralelamente es más eficiente. como evidencia de este etapa quedan en el repositorio 1 notebook de EDA y 1 dataframe por cada carpeta recibida.
+Se recibieron 3 carpetas,a cada uno se le hizo un EDA y ETL paralelamente, pues entender los datos y transformarlos paralelamente es más eficiente. como evidencia de este etapa quedan en el repositorio 1 notebook de EDA  y 1 dataframe en parquet por cada carpeta recibida.
 
-Loas 3 archivos EDAS, iniciaron con la importación de las siguientes bibliotevas:
+Loas 3 archivos EDAS, iniciaron con la importación de las siguientes bibliotecas:
 
 - Pandas (import pandas as pd): Con el fin de trabajar los datos, por su volumen
 - JSON (import json): Dado que los archivos al descomprimires estan en formato Json
@@ -52,10 +52,11 @@ Loas 3 archivos EDAS, iniciaron con la importación de las siguientes biblioteva
 
 A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa, aunque los pasos operativos se encuentran en los comentarios del mismo notebook en Jupyter:
 
-* __Steam Games__: Se revisa una carpeta comprimida .gz que contiene un archivo json.
-  Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas
+* __Steam_Games__: Se revisa una carpeta comprimida .gz que contiene un archivo json.
+  Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas. continene un archivo llamado output_steam_games
+  La información se refiere a las características del juego como tal
   Lo primero es descomprimirlo, abrirlo y convertir los datos en un dataframe de pandas y se observa lo siguiente:
-  
+    
   Tipo: diccionario
   
   Size: 120.445 x 13 despues de eliminan NAN 22.530
@@ -66,20 +67,23 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
   
   Se ven columnas repetidas como genres y tags, como app_name y title, se debe borrar una de ellas
   
-  
+  Se deben tener en cuenta el tipo de datos en que viene cada columna: todos en object y id y early acces en Float64. en caso que early acces se refiera a una fecha tocará cambiarle el tió
+  Para desanida se utilizó función explode que aumenta el numero de filas repitiendo las columnas
 
-  
+    
+ * __User_Reviews__: inicialmen te se revisan las características de los datos en plano y se puede observar que el archivo Json que incluye la carpeta se llama australian_user_reviews
+Tambien parece contener un diccionario pues inicia con corchetes y tiene : lo que indica que incluye claves.
+Lo primero es descomprimir el archivo de la misma forma que se hizo con el anterior.
 
-  
-  
-  
+En este caso lo que se hizo fué desarrollar una fórmula para que leyera los archivos que son cadenas en este caso y recorrerlos par apasar los datos a la lista que se creo. 
+También se utilizó la función ast_literal
 
+al abrirlo en Pandas verifico que es un dataframe con 3 columnas referente al usuario, el id, la url y los reviews que hay que explodar por que e ve que vienen anidadas.
 
+Como en los otros casos, los pasos operativos, se encuentran explicados el detalle en el notebook.
+Para desanidar la ultima columna se utilizó explide y normalize que independiza la columna y eso hace que se puede volver a desanidar
 
-
-
-
-* 
+Posteriormente, se reindexa la columna oxplod y se vuelven a juntar mediante un merge para tener un solo dataframe final con toda la información 
 
 
 
