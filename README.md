@@ -31,48 +31,40 @@ Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que in
 
 ## Flujo de Trabajo
 
-## Tabla de Contenidos
-
-- [EDA]
-- [ETL]
-- [ML]
-- [Desarrollo ML-OPS]
-- [Implementación ML-OPS]
-- [Presentación]
+- EDA & ETL
+- Desarrollo ML-OPS
+- Implementación ML-OPS
+- Presentación
 
 
-## Instalación
+### EDA & ETL
 
-Instrucciones paso a paso sobre cómo instalar y configurar el proyecto.
+Se recibieron 3 carpetas,a cada uno se le hizo un EDA y ETL paralelamente, pues entender los datos y transformarlos paralelamente fué apropiado.  A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa:
 
-## Uso
+* __Steam Games__: Se revisa una carpeta compromoda .gz que contiene un archivo json.
+  Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas
+  Lo primero es abrir el archivo para poder transformarlo y manipularlo.
 
-Instrucciones detalladas sobre cómo utilizar el proyecto, incluyendo ejemplos de código si es necesario.
 
-## Ejemplos
+
+
+
+
+* 
+
+
+
+### Desarrollo ML-OPS
 
 Ejemplos adicionales de cómo usar el proyecto en diferentes situaciones o escenarios.
 
-## Contribución
+### Implementación ML-OPS
 
 Información sobre cómo contribuir al proyecto, incluyendo pautas de contribución y cómo enviar solicitudes de extracción.
 
-## Créditos
+### Presentación
 
-Reconocimiento a cualquier persona, proyecto o recurso externo que haya sido utilizado en la creación del proyecto.
-
-## Licencia
-
-Información sobre la licencia bajo la cual se distribuye el proyecto y cualquier restricción o requisitos de uso.
-
-## Estado del Proyecto
-
-Información sobre el estado actual del proyecto, como versiones, características planeadas, problemas conocidos, etc.
-
-## Contacto
-
-Formas de ponerse en contacto contigo, ya sea para informar sobre problemas, hacer preguntas o proporcionar comentarios.
-
+Reconocimiento a cualquier persona, proyecto o recurso externo que haya sido utilizado en la creación del proyecto
 
 
 ## Documentación
@@ -85,6 +77,7 @@ Los documentos y data sets para la entrega se encontrarán además, en el siguie
 [[https://drive.google.com/drive/folders/1npceA-nxhnUVxT3Y0qtKvKYyVYIIaaGL?usp=sharing](https://drive.google.com/drive/folders/13gMlg5p4hE9f6q6UP05ZRnvu3DlLbGvg?usp=drive_link)]
 
 </p>
+
 
 
 ## Pasos para el desarrollo del Proyecto
