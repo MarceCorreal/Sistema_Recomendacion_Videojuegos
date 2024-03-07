@@ -39,11 +39,34 @@ Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que in
 
 ### EDA & ETL
 
-Se recibieron 3 carpetas,a cada uno se le hizo un EDA y ETL paralelamente, pues entender los datos y transformarlos paralelamente fué apropiado.  A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa:
+Se recibieron 3 carpetas,a cada uno se le hizo un EDA y ETL paralelamente, pues entender los datos y transformarlos paralelamente es más eficiente. como evidencia de este etapa quedan en el repositorio 1 notebook de EDA y 1 dataframe por cada carpeta recibida.
+
+Loas 3 archivos EDAS, iniciaron con la importación de las siguientes bibliotevas:
+Pandas (import pandas as pd): Con el fin de trabajar los datos, por su volumen
+JSON (import json): Dado que los archivos al descomprimires estan en formato Json
+Expresiones Regulares (import re) para coincidir las busquedas con cadenas de texto
+AST (import ast): Est biblioteca fué necesario descargarla ya que los dataset tenían una estructura abstracta 
+TextBlob: proporciona herramientas para el procesamiento de lenguaje natural (NLP)
+
+
+A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa, aunque los pasos operativos se encuentran en los comentarios del mismo notebook en Jupyter:
 
 * __Steam Games__: Se revisa una carpeta compromoda .gz que contiene un archivo json.
   Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas
-  Lo primero es abrir el archivo para poder transformarlo y manipularlo.
+  Lo primero es descomprimirlo, abrirlo y convertir los datos en un dataframe de pandas y se observa lo siguiente:
+  Tipo: diccionario
+  Size: 120.445 x 13 despues de eliminan NAN 22.530
+  Tamaño: 113 MB
+  EL Dataframe tiene columnas anidadas, es decir listas dentro de listas que se deben desanidar
+  Se ven columnas repetidas como genres y tags, como app_name y title, se debe borrar una de ellas
+  
+  
+
+  
+
+  
+  
+  
 
 
 
