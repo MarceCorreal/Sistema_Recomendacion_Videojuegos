@@ -12,7 +12,7 @@
 
 <p style="text-align: justify;">
 
-El presente proyecto se presenta como requisito para la cursada de Henry
+El presente proyecto se presenta como requisito para aprobar el módulo de laboratorios de Henry
 
 Consiste en desarrollar un sistema de recomendación de videojuegos de la tienda Steam, surtiendo todos los pasos que se deben tener en cuenta para esta misión.
 
@@ -22,6 +22,56 @@ El repositorio de Henry con las consignas se encentran en: https://github.com/so
 
 </p>
 
+
+## Objetivo del Proyecto 
+
+El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluya la recopilación y transformación de datos, el  análisis exploratorio, el desarrollo de un mmodelo de machine learning y su implementación.
+
+Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que incluya una API en la nube y la implementación de dos modelos de Machine Learning: análisis de sentimientos en comentarios de usuarios y recomendación de juegos basada en nombre o preferencias de usuario.
+
+## Flujo de Trabajo
+
+## Tabla de Contenidos
+
+- [EDA]
+- [ETL]
+- [ML]
+- [Desarrollo ML-OPS]
+- [Implementación ML-OPS]
+- [Presentación]
+
+
+## Instalación
+
+Instrucciones paso a paso sobre cómo instalar y configurar el proyecto.
+
+## Uso
+
+Instrucciones detalladas sobre cómo utilizar el proyecto, incluyendo ejemplos de código si es necesario.
+
+## Ejemplos
+
+Ejemplos adicionales de cómo usar el proyecto en diferentes situaciones o escenarios.
+
+## Contribución
+
+Información sobre cómo contribuir al proyecto, incluyendo pautas de contribución y cómo enviar solicitudes de extracción.
+
+## Créditos
+
+Reconocimiento a cualquier persona, proyecto o recurso externo que haya sido utilizado en la creación del proyecto.
+
+## Licencia
+
+Información sobre la licencia bajo la cual se distribuye el proyecto y cualquier restricción o requisitos de uso.
+
+## Estado del Proyecto
+
+Información sobre el estado actual del proyecto, como versiones, características planeadas, problemas conocidos, etc.
+
+## Contacto
+
+Formas de ponerse en contacto contigo, ya sea para informar sobre problemas, hacer preguntas o proporcionar comentarios.
 
 
 
@@ -37,7 +87,9 @@ Los documentos y data sets para la entrega se encontrarán además, en el siguie
 </p>
 
 
-## Diagrama de Flujo del Proyecto
+## Pasos para el desarrollo del Proyecto
+
+1 - 
 
 
 La primera parte del proyecto es desarrollar el EDA de los archivos recibidos en la consigna donde se entienden los datos que se entregan en la consigna y el ETL donde será necesario efectuar las transformaciones mínimas de cada archivo recibido.
