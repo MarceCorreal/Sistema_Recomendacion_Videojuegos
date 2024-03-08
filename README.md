@@ -119,6 +119,52 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     La quinta columna se debe desanidar con eol mismo procedimiento: explode, normalize, indexar y merge
 
 
+   ## Funciones
+
+   Cada una de las funciones a continuación cuenta con una carpeta individual en el github, deon de se encontraá un archivo del desarrollo del daraframe de la función, el datframe de la función y un notebook de la función
+
+    - def **developer( *`desarrollador` : str* )**:
+    
+    `Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora. 
+    Ejemplo de retorno:
+    
+    | Año  | Cantidad de Items | Contenido Free  |
+    |------|-------------------|------------------|
+    | 2023 | 50                | 27%              |
+    | 2022 | 45                | 25%              |
+    | xxxx | xx                | xx%              |
+    
+    
+    __Data Frame para la función: df_developer__: El dataframe de esta función se inició con user_items, dejando solo user_id, item_id, item_name y playtimeforever. Hago columna recommend, buscando item_id que es columna en común en df use_reviews y         finalmente busco el price con el item_name que es columna en común con  steam_games
+
+   __Desarrollo función df_developer__
+     Para esta función, lo primero es filtrar el data frame por el desarrollador o developer elegido por el usuario, a partir del dataframe filtrado, Se agrupa por año y se suma cantidad items, cantidad items free y calcular el porcentaje
+     Finalmente de retora un diccionario que incluye el año. la cantidad de items totales del desarrollador en ese año y el prcentaje que se calculó a travez de una función lamb
+   
+
+  
+  
+  
+
+
+- 
+- Desarrollo ML-OPS
+- Implementación ML-OPS
+- Presentación
+
+
+
++ def **developer( *`desarrollador` : str* )**:
+    `Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora. 
+Ejemplo de retorno:
+
+| Año  | Cantidad de Items | Contenido Free  |
+|------|-------------------|------------------|
+| 2023 | 50                | 27%              |
+| 2022 | 45                | 25%              |
+| xxxx | xx                | xx%              |
+
+
 ### Desarrollo ML-OPS
 
 Ejemplos adicionales de cómo usar el proyecto en diferentes situaciones o escenarios.
