@@ -12,11 +12,11 @@ app = FastAPI()
 # Función Developer________________________________________________________________________________________________________________________________________________________________________________
 
 def developer(df_developer, desarrollador):
-    # Filtrar df por desarrollador
+    # Filtrar df por desarrollador developer
     
     df_developer_filtrado = df_developer[df_developer['developer'] == desarrollador]
     
-    # Producir resultado
+    # Producir resultado developer
     
     respuestas_anuales  = df_developer_filtrado.groupby('release_year').agg({
         'items_free':'sum', 
@@ -24,7 +24,7 @@ def developer(df_developer, desarrollador):
         'porcentaje': lambda x:(pd.to_numeric(x.str.rstrip('%'), errors='coerce') /  100).mean() *100
         }).reset_index()
     
-    # Definir respuestas 
+    # Definir respuestas developer
     respuestas_anuales['porcentaje'] = respuestas_anuales['porcentaje'].round(2)
     respuestas_anuales = respuestas_anuales.rename(columns={'release_year': 'Anio'})
     respuestas_anuales = respuestas_anuales.rename(columns={'items_total': 'Items'})
@@ -38,7 +38,7 @@ def developer(df_developer, desarrollador):
 async def get_developer(desarrollador: str):
 
     
-# Ejecución de la Función
+# Ejecución de la Función developer
     
     try:
         # Ruta_df_developer = r"C:\Users\Usuario\Henry\PI1_ML\Funciones\Developer\df_developer.parquet"
@@ -49,3 +49,5 @@ async def get_developer(desarrollador: str):
     except Exception as e:
         print(e)  # Imprimir el error para depuración
         return {'error': 'Ocurrió un error al procesar la solicitud'}
+
+
