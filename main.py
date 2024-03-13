@@ -1,14 +1,25 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
-from fastapi.responses import HTMLResponse
-import pandas as pd
-import numpy as np
-import scipy as sp
-from sklearn.metrics.pairwise import cosine_similarity
-import operator
-import pyarrow as pa
-import pyarrow.parquet as pq
-from scipy.sparse import csr_matrix
+# Importaciones de bibliotecas necesarias
+
+from fastapi import FastAPI
+import pandas as pd  # Pandas para manipulación de datos tabulares
+import json  # Módulo para trabajar con JSON
+import ast  # Módulo para evaluar expresiones literales de Python
+import re  # Módulo para trabajar con expresiones regulares
+from textblob import TextBlob # Importa la clase TextBlob desde la biblioteca TextBlob
+import nltk # Importa la biblioteca nltk (Natural Language Toolkit)
+import csv # Importa el módulo csv en Python
+
+# Habilita la recarga automática de módulos antes de ejecutar una celda
+#%load_ext autoreload
+#%autoreload 2
+
+# Importa el módulo de advertencias y configura para ignorar todas las advertencias
+#import warnings
+#warnings.filterwarnings("ignore")
+
+# Importa el módulo de advertencias y configura para ignorar todas las advertencias
+#import warnings
+#warnings.filterwarnings("ignore")
 
 
 app = FastAPI()
@@ -58,46 +69,45 @@ async def get_developer(desarrollador: str):
 
 # Función Userdata________________________________________________________________________________________________________________________________________________________________________________
 def userdata(df_userdata, user_id):
-
     # Filtrar el DataFrame para obtener la información del usuario
     df_userdata_usuario = df_userdata[df_userdata['user_id'] == user_id]
 
-    #if df_userdata_usuario.empty:
-       # return f"El usuario {user_id} no existe en el DataFrame."
+    if df_userdata_usuario.empty:
+        return f"El usuario {user_id} no existe en el DataFrame."
 
     # Obtener la primera fila
     
-    dinero_gastado = usuario['cantidad total gastado'].iloc[0]
-    porcentaje_recomendacion = float(usuario['percentage_true'].iloc[0].rstrip('%'))
-    cantidad_items = usuario['item_id'].nunique()
+    dinero_gastado = df_userdata_usuario['cantidad total gastado'].iloc[0]
+    porcentaje_recomendacion = float(df_userdata_usuario['percentage_true'].iloc[0].rstrip('%'))
+    cantidad_items = df_userdata_usuario['item_id'].nunique()
 
     # Crear el diccionario de retorno
     
     resultado = {
         "Usuario": user_id,
         "Dinero gastado": f"${dinero_gastado:.2f} USD",
-        "% de recomendación": f"{porcentaje_recomendacion:.2f}%",
+        "porcentaje de recomendación": f"{porcentaje_recomendacion:.2f}%",
         "Cantidad de items": cantidad_items
     }
 
     return resultado
 
-# Definir ruta - Decorador userdata_____________________________________________________________________________________________________________________________________
+# Definir ruta - Decorador userdata____________________________________________________________________________________________________________________________________
 
 @app.get("/userdata/{user_id}")
 
-async def get_user_id(user_id: str):
-
+async def get_userdata(user_id: str):
 
     
 # Ejecución de la Función developer
     
     try:
-        parquet_path2 = r"C:\Users\Usuario\Henry\PI1_ML\Funciones\UserData\df_userdata.parquet"
-        #parquet_path2  = "C:\Users\Usuario\Henry\PI1_ML\Funciones\UserData\df_userdata.parquet"
-        df_userdata = pd.read_parquet(parquet_path2)
+        # Ruta_df_userdata = r"C:\Users\Usuario\Henry\PI1_ML\Funciones\UserData\df_userdata.parquet"
+        ruta_df_userdata = r"C:\Users\Usuario\Henry\PI1_ML\Funciones\UserData\df_userdata.parquet"  
+        df_userdata = pd.read_parquet(ruta_df_userdata)
         result = userdata(df_userdata, user_id)
         return result.to_dict(orient="records")
     except Exception as e:
         print(e)  # Imprimir el error para depuración
         return {'error': 'Ocurrió un error al procesar la solicitud'}
+
