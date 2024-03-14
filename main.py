@@ -225,3 +225,53 @@ async def get_best_developer_year(year: int):
         return JSONResponse(content=result)
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
+
+
+# developer_reviews_analysis________________________________________________________________________________________________________________________________________________________________________________
+
+def developer_reviews_analysis(df, desarrolladora):
+
+    '''
+    Esta función realiza un análisis de sentimientos de las reseñas para una desarrolladora específica.
+         
+    Args:
+        df (pd.DataFrame): DataFrame que contiene los datos.
+        desarrolladora (str): Nombre de la desarrolladora a analizar.
+    
+    Returns:
+        dict: Un diccionario que contiene el resultado del análisis de sentimientos.
+            - La clave es el nombre de la desarrolladora.
+            - El valor es una lista con la cantidad de reseñas negativas y positivas.
+    '''
+
+    filtered_data = df[df['developer'] == desarrolladora]
+    positive_count = 0
+    negative_count = 0
+
+    for sentiment in filtered_data['sentiment_analysis']:
+        if sentiment == 0:
+            negative_count += 1
+        elif sentiment == 2:
+            positive_count += 1
+
+    result = {desarrolladora: [f"Negative = {negative_count}", f"Positive = {positive_count}"]}
+    return result
+
+@app.get("/developer_reviews_analysis/{desarrolladora}",
+                    description=
+                    """ <font color="black">
+                    INSTRUCCIONES<br>
+                    1. Haga clik en "Try it out".<br>
+                    2. Ingrese el developer en el box abajo. Ejemplo: Valve <br>
+                    3. Scrollear a "Response body" para ver cuantas reseñas positivas y negativas tuvo el desarrollador.
+                    </font>"""
+                    , tags=['Consultas generales'])
+async def get_developer_reviews_analysis(desarrolladora: str):
+    try:
+        parquet_path5 = r"C:\Users\Usuario\Henry\PI1_ML\Funciones\developer_reviews_analysis\dataset_endpoint_5.parquet"
+        #parquet_path5 = "C:\Users\Usuario\Henry\PI1_ML\Funciones\developer_reviews_analysis\dataset_endpoint_5.parquet"
+        df = pd.read_parquet(parquet_path5)
+        result = developer_reviews_analysis(df, desarrolladora)
+        return JSONResponse(content=result)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
