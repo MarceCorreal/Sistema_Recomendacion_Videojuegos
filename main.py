@@ -218,8 +218,9 @@ def best_developer_year(dataframe, year):
                     , tags=['Consultas generales'])
 async def get_best_developer_year(year: int):
     try:
-        parquet_path4 = "Funciones\best_developer_year\dataset_endpoint_4.parquet"
+        parquet_path4 = r"Funciones\best_developer_year\dataset_endpoint_4.parquet"
         #parquet_path4 = "C:\Users\Usuario\Henry\PI1_ML\Funciones\best_developer_year\dataset_endpoint_4.parquet"
+        df = pd.read_parquet(parquet_path4)
         result = best_developer_year(df, year)
         return JSONResponse(content=result)
     except Exception as e:
