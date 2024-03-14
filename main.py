@@ -134,7 +134,7 @@ async def get_user_id(user_id: str):
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
     
-#3° Endpoint________________________________________________________________________________________________________________________________________________________________________________
+# Userforgenre________________________________________________________________________________________________________________________________________________________________________________
 
 def UserForGenre(genre: str, df):
 
@@ -183,4 +183,44 @@ async def get_user_for_genre(genre: str):
 
 
 
+# best_developer_year________________________________________________________________________________________________________________________________________________________________________________
 
+def best_developer_year(dataframe, year):
+
+    '''
+    Esta función devuelve los mejores desarrolladores para un año específico basado en el análisis de sentimientos.
+         
+    Args:
+        dataframe (pd.DataFrame): DataFrame que contiene los datos.
+        year (int): Año para el cual se desean obtener los mejores desarrolladores.
+    
+    Returns:
+        list: Una lista de diccionarios que contiene información sobre los mejores desarrolladores.
+            - Cada diccionario tiene la forma: {"Puesto [posición]: [nombre del desarrollador]": [sentimiento total]}
+    '''
+
+    df_year = dataframe[dataframe['release_anio'] == year]
+    df_filtered = df_year[df_year['sentiment_analysis'] == 2]
+    df_grouped = df_filtered.groupby('developer')['sentiment_analysis'].sum().reset_index()
+    df_sorted = df_grouped.sort_values(by='sentiment_analysis', ascending=False)
+    top_developers = df_sorted.head(3)
+    result = [{"Puesto {}: {}".format(i+1, row['developer']): row['sentiment_analysis']} for i, (_, row) in enumerate(top_developers.iterrows())]
+    return result
+
+@app.get("/best_developer_year/{year}",
+                    description=
+                    """ <font color="black">
+                    INSTRUCCIONES<br>
+                    1. Haga clik en "Try it out".<br>
+                    2. Ingrese un año para saber el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado.. Ejemplo: 2015 <br>
+                    3. Scrollear a "Response body" para ver el resultado.
+                    </font>"""
+                    , tags=['Consultas generales'])
+async def get_best_developer_year(year: int):
+    try:
+        parquet_path4 = "Funciones\best_developer_year\dataset_endpoint_4.parquet"
+        #parquet_path4 = "C:\Users\Usuario\Henry\PI1_ML\Funciones\best_developer_year\dataset_endpoint_4.parquet"
+        result = best_developer_year(df, year)
+        return JSONResponse(content=result)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
