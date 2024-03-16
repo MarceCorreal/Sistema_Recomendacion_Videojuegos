@@ -29,11 +29,24 @@ El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluy
 
 Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que incluya una API en la nube y la implementación de dos modelos de Machine Learning: análisis de sentimientos en comentarios de usuarios y recomendación de juegos basada en nombre o preferencias de usuario.
 
+## Documentación
+<p style="text-align: justify;">
+
+En el Presente repositorio se encontrarán los notebooks de Jupyter en que se trabajan los datos y la programación del proyecto. 
+
+Los documentos y data sets para la entrega se encontrarán además, en el siguiente Drive de Google creado para este fin:
+
+[[https://drive.google.com/drive/folders/1npceA-nxhnUVxT3Y0qtKvKYyVYIIaaGL?usp=sharing](https://drive.google.com/drive/folders/13gMlg5p4hE9f6q6UP05ZRnvu3DlLbGvg?usp=drive_link)]
+
+</p>
+
+
+
 ## Flujo de Trabajo
 
 - EDA & ETL
-- Desarrollo ML-OPS
-- Implementación ML-OPS
+- Desarrollo ML_OPS 
+- Modelo ML
 - Presentación
 
 
@@ -119,75 +132,94 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     La quinta columna se debe desanidar con eol mismo procedimiento: explode, normalize, indexar y merge
 
 
+   ## Desarrollo ML_OPS 
    ## Funciones
+   
 
    Cada una de las funciones a continuación cuenta con una carpeta individual en el github, deon de se encontraá un archivo del desarrollo del daraframe de la función, el datframe de la función y un notebook de la función
 
-    - def **developer( *`desarrollador` : str* )**:
+   # def **developer( *`desarrollador` : str* )**:
     
-    `Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora. 
-    Ejemplo de retorno:
-    
-    | Año  | Cantidad de Items | Contenido Free  |
-    |------|-------------------|------------------|
-    | 2023 | 50                | 27%              |
-    | 2022 | 45                | 25%              |
-    | xxxx | xx                | xx%              |
-    
-    
-    __Data Frame para la función: df_developer__: El dataframe de esta función se inició con user_items, dejando solo user_id, item_id, item_name y playtimeforever. Hago columna recommend, buscando item_id que es columna en común en df use_reviews y         finalmente busco el price con el item_name que es columna en común con  steam_games
-
-   __Desarrollo función df_developer__
-     Para esta función, lo primero es filtrar el data frame por el desarrollador o developer elegido por el usuario, a partir del dataframe filtrado, Se agrupa por año y se suma cantidad items, cantidad items free y calcular el porcentaje
-     Finalmente de retora un diccionario que incluye el año. la cantidad de items totales del desarrollador en ese año y el prcentaje que se calculó a travez de una función lamb
+     Devuelve la`Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora.
    
+    # def **userdata( *`useridr` : str* )**:
+    
+    Devuelva la  cantidad de dinero gastado por el usuario que ingresa el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.
+    
+    # def UserForGenre( genero : str ):
 
-  
-  
-  
+    Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
+
+   # def best_developer_year( año : int ):
+
+    Devuelve el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
+
+   # def developer_reviews_analysis( desarrolladora :
+
+    Devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
+
+Posterior a la elaboración de las funciones, con ayuda de Fast API y render, se desplegaron las funciones anteriormente descritas en aplicaciones para servirse el en el servidor 
+SWAGGER - local host http://8000
+
+Inicialmente, después de desarrollar los data frame individuales para cada función y desarrollar cada función en local,
+se probó cada una de las funciones con algún ejemplo para verificar su correcto funcionamiento.
+
+Cada una de las funciones cuenta con una carpeta donde se aloja el df de la función, la función en local  y el archivo en jupiter 
+donde se dasarrolló cada una de los dataframes de cada función-
+
+Posteriormente se desarrollo el archivo main alojado en la carpeta raiz del proyecto, en la que, después de importar todas las 
+bibliotecas necesarias para todas las funciónes, se instanció la aplicación fast api:
+
+app = FastAPI()
+
+A renglón seguido se deja en espacio para cada función, en la que se escriben las instrucciones para el usuario y se provee un 
+ejemplo para su utilización.
+
+En el espacio de cada función, se copia la función ya probada y se indica lo siguiente:
+
+@app.get("/developer_reviews_analysis/{desarrolladora}",
+async def get_developer_reviews_analysis(desarrolladora: str):
+
+incluyendo el nomre de la función y el argumento que ingresará el usuario dentro de corchetes.
+Se utilizó el método get para todas las funciones y se dejó un sólo tag llamado 'Consultas PI1-ML' 
+para indicar la finalidad de las funciones.
+
+Despés de verificar que cada una de las funciones corría de forma indicada sin bugs en visual,
+Se pasó a levantar render generando la conexión desde la página de render siguiento las indicaciones
+con mi repositorio en github.
+
+### Modelo de Aprendizaje Automático
+
+Con el fin de organizar la información del proyecto, se creó en el repositorio una carpeta llemada Modelo_Aprendizaje automático
+Para desarrollar este aparte, se debe iniciar por el análisis de toda la base de datos para encontrar juegos similares al juego 
+proporcionado por el usuario activo. 
+El algoritmo trata de identificar la similitud entre los juegos al utilizar la similitud del coseno que sugiere la consigna, como medida.
+La similitud del coseno es una técnica comúnmente empleada en sistemas de recomendación y análisis de datos para evaluar cuán similares
+son dos conjuntos de datos o elementos
+
+El desarrollo del coseno  proporciona una medida cuantitativa de la similitud entre juegos, permitiendo al modelo generar recomendaciones 
+basadas en juegos que comparten características similares.
+
+Con el fin de  organizar la organización para el desarrollo del modelo se crean las siguientes carpetas:
+
+* Datos_Modelos_ en la que se van a manipular, analizar los datos y dejarlos en data frame facil de manejar en pandas por temas de espacio
+* EDA_Datos_Modelo en la que se va a analizar los datos que han sido trnsformados lo necesario
+* Modelo_Recomendación con el modelo que se desarrolle como tal.
+
+## Datos_Modelo
+
+Los desarrollos de los datos se encuentran en el notebook de Jupyter Datos_Modelo
 
 
-- 
-- Desarrollo ML-OPS
-- Implementación ML-OPS
-- Presentación
 
 
 
-+ def **developer( *`desarrollador` : str* )**:
-    `Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora. 
-Ejemplo de retorno:
 
-| Año  | Cantidad de Items | Contenido Free  |
-|------|-------------------|------------------|
-| 2023 | 50                | 27%              |
-| 2022 | 45                | 25%              |
-| xxxx | xx                | xx%              |
-
-
-### Desarrollo ML-OPS
-
-Ejemplos adicionales de cómo usar el proyecto en diferentes situaciones o escenarios.
-
-### Implementación ML-OPS
-
-Información sobre cómo contribuir al proyecto, incluyendo pautas de contribución y cómo enviar solicitudes de extracción.
 
 ### Presentación
 
 Reconocimiento a cualquier persona, proyecto o recurso externo que haya sido utilizado en la creación del proyecto
 
-
-## Documentación
-<p style="text-align: justify;">
-
-En el Presente repositorio se encontrarán los notebooks de Jupyter en que se trabajan los datos y la programación del proyecto. 
-
-Los documentos y data sets para la entrega se encontrarán además, en el siguiente Drive de Google creado para este fin:
-
-[[https://drive.google.com/drive/folders/1npceA-nxhnUVxT3Y0qtKvKYyVYIIaaGL?usp=sharing](https://drive.google.com/drive/folders/13gMlg5p4hE9f6q6UP05ZRnvu3DlLbGvg?usp=drive_link)]
-
-</p>
 
 
 
