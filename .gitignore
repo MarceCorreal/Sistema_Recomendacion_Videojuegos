@@ -4,7 +4,7 @@ dataset_endpoint_1.parquet
 dataset_endpoint_2.parquet
 dataset_endpoint_3.parquet
 dataset_endpoint_5.parquet
-df_user_reviews_helpul.parquet
+df_user_reviews_helpful.parquet"
 df_items.parquet
 df_reviews.parquet
 
