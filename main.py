@@ -265,3 +265,55 @@ async def get_developer(desarrollador: str):
         raise HTTPException(status_code=500, detail=f"Error al procesar la solicitud: {str(e)}")
 
 
+# MODELO DE RECOMENDACIÓN ________________________________________________________________________________________________________________________________________________________________________________
+
+def calculate_recommendations(df):
+    # Tomar una muestra representativa del 10% del conjunto de datos
+    df_sample = df.sample(frac=0.1, random_state=42)
+
+    piv = df_sample.pivot_table(index=['user_id'], columns=['item_name'], values='rating')
+    piv_norm = piv.apply(lambda x: (x - np.mean(x)) / (np.max(x) - np.min(x)), axis=1)
+    piv_norm.fillna(0, inplace=True)
+    piv_norm = piv_norm.T
+    piv_norm = piv_norm.loc[:, (piv_norm != 0).any(axis=0)]
+    
+    piv_sparse = csr_matrix(piv_norm.values)
+    
+    item_similarity = cosine_similarity(piv_sparse)
+    user_similarity = cosine_similarity(piv_sparse.T)
+
+    item_sim_df = pd.DataFrame(item_similarity, index=piv_norm.index, columns=piv_norm.index)
+    user_sim_df = pd.DataFrame(user_similarity, index=piv_norm.columns, columns=piv_norm.columns)
+
+    return item_sim_df
+
+# Cargar el DataFrame fuera de la función del endpoint
+#parquet_path_recomendacion = "C:/Users/Usuario/Desktop/Repositorios Github/HENRY_Proyecto_Individual_1_MLOps_Orestes_Victor/Dataset/df_recomendacion.parquet"
+parquet_path_recomendacion = "Dataset/df_recomendacion.parquet"
+df_recomendacion = pd.read_parquet(parquet_path_recomendacion)
+item_sim_df_recomendacion = calculate_recommendations(df_recomendacion)
+
+@app.get("/top_game/{game}", 
+
+                    description=
+                    """ <font color="black">
+                    INSTRUCCIONES<br>
+                    1. Haga clik en "Try it out".<br>
+                    2. Ingrese el juego en el box abajo. Ejemplo: Killing Floor o Metro 2033 <br>
+                    3. Scrollear a "Response body" para ver los juegos recomendados similares al ingresado.
+                    </font>"""
+                    ,tags=['Sistema de recomendación'])
+                    
+async def top_game(game: str):
+    try:
+        count = 1
+        similar_games = []
+
+        for item in item_sim_df_recomendacion.sort_values(by=game, ascending=False).index[1:6]:
+            similar_games.append({'No.': count, 'Game': item})
+            count += 1
+
+        return JSONResponse(content={"similar_games": similar_games})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
