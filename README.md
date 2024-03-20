@@ -36,7 +36,7 @@ En el Presente repositorio se encontrarán los notebooks de Jupyter en que se tr
 
 Los documentos y data sets para la entrega se encontrarán además, en el siguiente Drive de Google creado para este fin:
 
-(https://drive.google.com/drive/folders/1CqnqcrPWDIGo0FuxSTAd9qHw1pqiysAq?usp=drive_link)]
+(https://drive.google.com/drive/folders/1CqnqcrPWDIGo0FuxSTAd9qHw1pqiysAq?usp=drive_link)
 
 </p>
 
@@ -82,6 +82,10 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
   
   Se deben tener en cuenta el tipo de datos en que viene cada columna: todos en object y id y early acces en Float64. en caso que early acces se refiera a una fecha tocará cambiarle el tió
   Para desanida se utilizó función explode que aumenta el numero de filas repitiendo las columnas
+
+ El archivo descrito se encuentra en el siguiente vínculo:
+
+ (https://drive.google.com/file/d/1vcobbjAteXjgmQ0_Vh8YwkDtLE2YEO3d/view?usp=drive_link)
 
     
  * __User_Reviews__: Inicialmente se revisan las características de los datos en plano y se puede observar que el archivo Json que incluye la carpeta se llama australian_user_reviews
