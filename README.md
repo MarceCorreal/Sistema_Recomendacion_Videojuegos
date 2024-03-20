@@ -36,7 +36,7 @@ En el Presente repositorio se encontrarán los notebooks de Jupyter en que se tr
 
 Los documentos y data sets para la entrega se encontrarán además, en el siguiente Drive de Google creado para este fin:
 
-[[https://drive.google.com/drive/folders/1npceA-nxhnUVxT3Y0qtKvKYyVYIIaaGL?usp=sharing](https://drive.google.com/drive/folders/13gMlg5p4hE9f6q6UP05ZRnvu3DlLbGvg?usp=drive_link)]
+(https://drive.google.com/drive/folders/1CqnqcrPWDIGo0FuxSTAd9qHw1pqiysAq?usp=drive_link)]
 
 </p>
 
