@@ -25,7 +25,7 @@ El repositorio de Henry con las consignas se encentran en: https://github.com/so
 
 ## Objetivo del Proyecto 
 
-El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluya la recopilación y transformación de datos, el  análisis exploratorio, el desarrollo de un mmodelo de machine learning y su implementación.
+El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluya la recopilación y transformación de datos, el  análisis exploratorio, el desarrollo de un modelo de machine learning y su implementación.
 
 Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que incluya una API en la nube y la implementación de dos modelos de Machine Learning: análisis de sentimientos en comentarios de usuarios y recomendación de juegos basada en nombre o preferencias de usuario.
 
