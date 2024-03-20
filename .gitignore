@@ -7,4 +7,4 @@ dataset_endpoint_5.parquet
 df_user_reviews_helpful.parquet"
 df_items.parquet
 df_reviews.parquet
-
+df_modelo.parquet
