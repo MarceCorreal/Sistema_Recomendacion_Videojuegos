@@ -119,6 +119,8 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     
     Para lo anterior se plició  df['Sentimiento'] = df['Texto'].apply(analizar_sentimiento)
 
+   (https://drive.google.com/file/d/1QByUDCu5Wz7uzEfh1KFgFIBVZZYOFqnV/view?usp=sharing)
+
  * __Users_Items__: Esta carpeta comprimida incluye un archivo llamado australian_users_items.
    También en codificación UTF-8
    
