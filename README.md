@@ -159,7 +159,7 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     Devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
 Posterior a la elaboración de las funciones, con ayuda de Fast API y render, se desplegaron las funciones anteriormente descritas en aplicaciones para servirse el en el servidor 
-SWAGGER - local host http://8000
+SWAGGER - local host http://127.0.0.1:8000/docs
 
 Inicialmente, después de desarrollar los data frame individuales para cada función y desarrollar cada función en local,
 se probó cada una de las funciones con algún ejemplo para verificar su correcto funcionamiento.
@@ -180,7 +180,7 @@ En el espacio de cada función, se copia la función ya probada y se indica lo s
 @app.get("/developer_reviews_analysis/{desarrolladora}",
 async def get_developer_reviews_analysis(desarrolladora: str):
 
-incluyendo el nomre de la función y el argumento que ingresará el usuario dentro de corchetes.
+incluyendo el nombre de la función y el argumento que ingresará el usuario dentro de corchetes.
 Se utilizó el método get para todas las funciones y se dejó un sólo tag llamado 'Consultas PI1-ML' 
 para indicar la finalidad de las funciones.
 
@@ -203,75 +203,41 @@ basadas en juegos que comparten características similares.
 Con el fin de  organizar la organización para el desarrollo del modelo se crean las siguientes carpetas:
 
 * Datos_Modelos_ en la que se van a manipular, analizar los datos y dejarlos en data frame facil de manejar en pandas por temas de espacio
-* EDA_Datos_Modelo en la que se va a analizar los datos que han sido trnsformados lo necesario
 * Modelo_Recomendación con el modelo que se desarrolle como tal.
 
 ## Datos_Modelo
 
-Los desarrollos de los datos se encuentran en el notebook de Jupyter Datos_Modelo
+Los desarrollos de los datos se encuentran en el notebook de Jupyter Datos_Modelo, hasta dejar un archivo llamado df creado a partir de los data frame df reviews y df_items
+ a este dataframe que ya esta limpio ingresa para hacer otro dta frame piv con base en la función pivot_table  que convierte estos datos como en una tabla dinámica
+ y la voltea para dejar en las filas los usuarios y en las columnas los juegos y co nlos datos del raiting con que cada jugado califico el juego.
 
+Ya con esa tabla, se normalizan los valores por que es muy grande y difícil de entender y tiene valores discímiles, 
+Para eso lo que se hizo fué los valores del dataframe piv restar la media de las calificaciones de un usuario y luego dividir
+por la diferencia entre el valor máximo y mínimo de las calificaciones. Esto ajusta las calificaciones de un usuario 
+y se centradan   en cero y escaladas en función de su variabilidad. 
 
+Se borran los usuarios que no dieron todas las calificaciones de forma correcta, Esto se debe a que estos usuarios no aportan información útil para el modelo de recomendación si todas sus calificaciones son iguales o si solo tienen una calificación.
 
+Luego seconvirtio en formato de matriz dispersa pues si no será un df muy grande
 
+## Similitud del Coseno
 
+Cuando se tiene la matriz dispersa, un poco mas digerible se utiliza la similitud del coseno haciendo 2 matrices de juegos donde se mida la similitud entre los datos o 
+elementosy se clcula mediante el cosenodel angulo entre los dos vectores de elementos. 
+Las dos maatrices fueron :item_sim_df y user_sim_df 
+
+## Función de Recomendación
+
+Con la relación calculada mediante el coseno, se hace una función que recomiende 5 juegos en función del juego que ingresó como argumento, teniendo en cuenta los valores
+mas altos que generó el cálculo con el coseno,  organizando la similitud de mayor a menor y finalmente se se imprime la lista de juegos.
 
 
 ### Presentación
 
-Reconocimiento a cualquier persona, proyecto o recurso externo que haya sido utilizado en la creación del proyecto
+Se presenta un video con la funcionalidad que genera el proyecto y un breve resúmen de los pasos surtidos
 
 
 
-
-## Pasos para el desarrollo del Proyecto
-
-1 - 
-
-
-La primera parte del proyecto es desarrollar el EDA de los archivos recibidos en la consigna donde se entienden los datos que se entregan en la consigna y el ETL donde será necesario efectuar las transformaciones mínimas de cada archivo recibido.
-
-1- EDA
-A cada uno de los archivos comprimidos Json.gz se le desarrolló un estudio para saber la información que contenía. En general, la data se encontraba cruda por lo que fué necesario, en primera instancia en cada uno de los archivo, borrar, los nulos y los vación con drop.na Posteriormente, se eliminarion los registros duplicados con .drop_duplicates()
-
-Algunos registos se veían anidados en listas de diccionarios, pr lo tanto el primer tratamiento para esos casos fué utilizar el método explode, lo que desanida en un primer nivel ese tipo de registros y posteriormente se normalizaban las columnas lo que independizaba la columna de los diccionario y aplana el archivo. Cuando el data frame se encuentra desanidado, basta con indexar los data fames explotados y normalizados para utilizar el concat y reunir toda la información en un mismo data frame. De igual forma, fué necesario borrar las columas que no agregaban valor, que no se borraron todas, pues pensé que depronto se necesaitarían a futuro para alguna función
-
-Relaciones: Las relaciones principales que se encontro entre los tres data frame fueron las siguientes:
-
-App_name de SteamGames contenia la misma información que item_name en users_items y se refiere el nombre. Por esto cambié el nomre de item_name
-user_id en users_reviews y user_id en users items es el mismo
-Para asegurarme de las relaciones que veia a simple vista organice los data frames de menor a mayor por la columna que estaba revisando df_organizado = df.sort_values(by='nombre_columna')
-2- Funciones
-Antes de desarrollar las APIS, tomé la desición de desarrollar las funciones en local
-
-El análisis y desarrollo para el desarrollo de las funciones es el siguiente:
-
-def fx_developer( desarrollador : str ): Cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
-Ejemplo de retorno: Año Cantidad de Items Contenido Free 2023 50 27% 2022 45 25% xxxx xx xx%
-
-Para Esta función se utilizan los siguientes datos: Release year que se encuentra en steam games, price que tambien está en steam games y el desarrollador que tambien lo está
-
-Es decrir que para el dataframe de esta función df_developer, solo necesito modificar steam games
-
-Primero hago un dataframe con solo la info que se necesita partiendo de steam games que es donde esta toda la información
-
-Luego agrupar por developer, filtrar por año, contar el total de los items y contar los items donde el precio es = 0
-
-Y con esta información encontrar el porcentaje final.
-
-def userdata( User_id : str ): Debe devolver cantidad de dinero gastado por el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.
-Ejemplo de retorno: {"Usuario X" : us213ndjss09sdf, "Dinero gastado": 200 USD, "% de recomendación": 20%, "cantidad de items": 5}
-
-def UserForGenre( genero : str ): Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
-Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
-
-def best_developer_year( año : int ): Devuelve el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
-
-¨def developer_reviews_analysis( desarrolladora : str ): Según el desarrollador, se devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
-
-Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}
-
-Dirección del Render https://pi1-machinelearning.onrender.com
 
 
 
