@@ -144,6 +144,8 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
 
    Cada una de las funciones a continuación cuenta con una carpeta individual en el github, deon de se encontraá un archivo del desarrollo del daraframe de la función, el datframe de la función y un notebook de la función
 
+   Todas las funciones se ven desarrolladas en el main por lo que no hace falta adjuntarlas
+
    # def **developer( *`desarrollador` : str* )**:
     
      Devuelve la`Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora.
@@ -211,6 +213,10 @@ Con el fin de  organizar la organización para el desarrollo del modelo se crean
 * Datos_Modelos_ en la que se van a manipular, analizar los datos y dejarlos en data frame facil de manejar en pandas por temas de espacio
 * Modelo_Recomendación con el modelo que se desarrolle como tal.
 
+El modelo se encuentra en el siguiente link:
+
+(https://drive.google.com/file/d/1yHK3R4x5m-flUvCJVnpYnm8crXxJXzx8/view?usp=sharing)
+
 ## Datos_Modelo
 
 Los desarrollos de los datos se encuentran en el notebook de Jupyter Datos_Modelo, hasta dejar un archivo llamado df creado a partir de los data frame df reviews y df_items
@@ -225,6 +231,8 @@ y se centradan   en cero y escaladas en función de su variabilidad.
 Se borran los usuarios que no dieron todas las calificaciones de forma correcta, Esto se debe a que estos usuarios no aportan información útil para el modelo de recomendación si todas sus calificaciones son iguales o si solo tienen una calificación.
 
 Luego seconvirtio en formato de matriz dispersa pues si no será un df muy grande
+
+Data frame utilizado para el modelo: (https://drive.google.com/file/d/1u8krMhv4W5-K2wKGw576QZ-ttNCu2SBM/view?usp=sharing)
 
 ## Similitud del Coseno
 
