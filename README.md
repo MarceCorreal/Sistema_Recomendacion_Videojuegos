@@ -137,7 +137,7 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     LA información esta en 5 columnas referente a la información de los usuarios y sus referencias.
     La quinta columna se debe desanidar con eol mismo procedimiento: explode, normalize, indexar y merge
 
-
+(https://drive.google.com/file/d/1vgdqcwLVbi3HtMI8AuaECHh_LCM0b6BA/view?usp=sharing)
    ## Desarrollo ML_OPS 
    ## Funciones
    
