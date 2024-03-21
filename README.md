@@ -146,7 +146,7 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
 
    Todas las funciones se ven desarrolladas en el main por lo que no hace falta adjuntarlas
 
-   # def developer( `desarrollador` : str ):
+   ### def developer( `desarrollador` : str ):
     
      Devuelve la`Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora.
    
