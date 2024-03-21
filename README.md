@@ -65,7 +65,7 @@ Loas 3 archivos EDAS, iniciaron con la importación de las siguientes biblioteca
 
 A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa, aunque los pasos operativos se encuentran en los comentarios del mismo notebook en Jupyter:
 
-* __Steam_Games__: Se revisa una carpeta comprimida .gz que contiene un archivo json.
+* Steam_Games: Se revisa una carpeta comprimida .gz que contiene un archivo json.
   Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas. continene un archivo llamado output_steam_games
   La información se refiere a las características del juego como tal
   Lo primero es descomprimirlo, abrirlo y convertir los datos en un dataframe de pandas y se observa lo siguiente:
