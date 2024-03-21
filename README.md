@@ -146,23 +146,23 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
 
    Todas las funciones se ven desarrolladas en el main por lo que no hace falta adjuntarlas
 
-   ### def developer( `desarrollador` : str ):
+  * def developer( `desarrollado : str ):
     
      Devuelve la`Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora.
    
-    # def **userdata( *`useridr` : str* )**:
+  * def userdata( *`useridr` : str* )**:
     
     Devuelva la  cantidad de dinero gastado por el usuario que ingresa el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.
     
-    # def UserForGenre( genero : str ):
+  * def UserForGenre( genero : str ):
 
-    Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
+    Devuelve el usuario que acumula más horas jugas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
 
-   # def best_developer_year( año : int ):
+  * def best_developer_year( año : int ):
 
     Devuelve el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
 
-   # def developer_reviews_analysis( desarrolladora :
+  * def developer_reviews_analysis (desarrolladora) :
 
     Devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
