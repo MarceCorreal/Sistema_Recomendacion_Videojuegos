@@ -248,7 +248,9 @@ mas altos que generó el cálculo con el coseno,  organizando la similitud de ma
 
 ### Presentación
 
-Se presenta un video con la funcionalidad que genera el proyecto y un breve resúmen de los pasos surtidos
+Se presenta un video con la funcionalidad que genera el proyecto y un breve resúmen de los pasos surtidos.
+
+(https://drive.google.com/file/d/1wGHuSlnQVUOOQkZ9WtFbV5WbF0MuRzHf/view?usp=sharing)
 
 
 
