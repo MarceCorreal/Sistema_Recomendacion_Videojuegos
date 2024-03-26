@@ -25,7 +25,7 @@ El repositorio de Henry con las consignas se encentran en: https://github.com/so
 
 ## Objetivo del Proyecto 
 
-El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluya la recopilación y transformación de datos, el  análisis exploratorio, el desarrollo de un mmodelo de machine learning y su implementación.
+El objetivo del proyecto es desarrollar un flujo de trabajo eficiente que incluya la recopilación y transformación de datos, el  análisis exploratorio, el desarrollo de un modelo de machine learning y su implementación.
 
 Este proyecto tiene como objetivo, desarrollar un Producto Mínimo Viable que incluya una API en la nube y la implementación de dos modelos de Machine Learning: análisis de sentimientos en comentarios de usuarios y recomendación de juegos basada en nombre o preferencias de usuario.
 
@@ -36,7 +36,7 @@ En el Presente repositorio se encontrarán los notebooks de Jupyter en que se tr
 
 Los documentos y data sets para la entrega se encontrarán además, en el siguiente Drive de Google creado para este fin:
 
-[[https://drive.google.com/drive/folders/1npceA-nxhnUVxT3Y0qtKvKYyVYIIaaGL?usp=sharing](https://drive.google.com/drive/folders/13gMlg5p4hE9f6q6UP05ZRnvu3DlLbGvg?usp=drive_link)]
+(https://drive.google.com/drive/folders/1CqnqcrPWDIGo0FuxSTAd9qHw1pqiysAq?usp=drive_link)
 
 </p>
 
@@ -65,7 +65,7 @@ Loas 3 archivos EDAS, iniciaron con la importación de las siguientes biblioteca
 
 A continuación, se presenta un apartado de cada uno de las carpetas recibidas con los comentarios particulares de esta etapa, aunque los pasos operativos se encuentran en los comentarios del mismo notebook en Jupyter:
 
-* __Steam_Games__: Se revisa una carpeta comprimida .gz que contiene un archivo json.
+* Steam_Games: Se revisa una carpeta comprimida .gz que contiene un archivo json.
   Al abrir este archivo en plano, parece ser un diccionario pues tiene formato clave valor de 13 columnas. continene un archivo llamado output_steam_games
   La información se refiere a las características del juego como tal
   Lo primero es descomprimirlo, abrirlo y convertir los datos en un dataframe de pandas y se observa lo siguiente:
@@ -82,6 +82,10 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
   
   Se deben tener en cuenta el tipo de datos en que viene cada columna: todos en object y id y early acces en Float64. en caso que early acces se refiera a una fecha tocará cambiarle el tió
   Para desanida se utilizó función explode que aumenta el numero de filas repitiendo las columnas
+
+ El archivo descrito se encuentra en el siguiente vínculo:
+
+ (https://drive.google.com/file/d/1vcobbjAteXjgmQ0_Vh8YwkDtLE2YEO3d/view?usp=drive_link)
 
     
  * __User_Reviews__: Inicialmente se revisan las características de los datos en plano y se puede observar que el archivo Json que incluye la carpeta se llama australian_user_reviews
@@ -115,6 +119,8 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     
     Para lo anterior se plició  df['Sentimiento'] = df['Texto'].apply(analizar_sentimiento)
 
+   (https://drive.google.com/file/d/1QByUDCu5Wz7uzEfh1KFgFIBVZZYOFqnV/view?usp=sharing)
+
  * __Users_Items__: Esta carpeta comprimida incluye un archivo llamado australian_users_items.
    También en codificación UTF-8
    
@@ -131,30 +137,32 @@ A continuación, se presenta un apartado de cada uno de las carpetas recibidas c
     LA información esta en 5 columnas referente a la información de los usuarios y sus referencias.
     La quinta columna se debe desanidar con eol mismo procedimiento: explode, normalize, indexar y merge
 
-
+(https://drive.google.com/file/d/1vgdqcwLVbi3HtMI8AuaECHh_LCM0b6BA/view?usp=sharing)
    ## Desarrollo ML_OPS 
    ## Funciones
    
 
    Cada una de las funciones a continuación cuenta con una carpeta individual en el github, deon de se encontraá un archivo del desarrollo del daraframe de la función, el datframe de la función y un notebook de la función
 
-   # def **developer( *`desarrollador` : str* )**:
+   Todas las funciones se ven desarrolladas en el main por lo que no hace falta adjuntarlas
+
+  * def developer( `desarrollado : str ):
     
      Devuelve la`Cantidad` de items y `porcentaje` de contenido Free por año según empresa desarrolladora.
    
-    # def **userdata( *`useridr` : str* )**:
+  * def userdata( *`useridr` : str* )**:
     
     Devuelva la  cantidad de dinero gastado por el usuario que ingresa el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.
     
-    # def UserForGenre( genero : str ):
+  * def UserForGenre( genero : str ):
 
-    Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
+    Devuelve el usuario que acumula más horas jugas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
 
-   # def best_developer_year( año : int ):
+  * def best_developer_year( año : int ):
 
     Devuelve el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
 
-   # def developer_reviews_analysis( desarrolladora :
+  * def developer_reviews_analysis (desarrolladora) :
 
     Devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
@@ -205,6 +213,10 @@ Con el fin de  organizar la organización para el desarrollo del modelo se crean
 * Datos_Modelos_ en la que se van a manipular, analizar los datos y dejarlos en data frame facil de manejar en pandas por temas de espacio
 * Modelo_Recomendación con el modelo que se desarrolle como tal.
 
+El modelo se encuentra en el siguiente link:
+
+(https://drive.google.com/file/d/1yHK3R4x5m-flUvCJVnpYnm8crXxJXzx8/view?usp=sharing)
+
 ## Datos_Modelo
 
 Los desarrollos de los datos se encuentran en el notebook de Jupyter Datos_Modelo, hasta dejar un archivo llamado df creado a partir de los data frame df reviews y df_items
@@ -220,6 +232,8 @@ Se borran los usuarios que no dieron todas las calificaciones de forma correcta,
 
 Luego seconvirtio en formato de matriz dispersa pues si no será un df muy grande
 
+Data frame utilizado para el modelo: (https://drive.google.com/file/d/1u8krMhv4W5-K2wKGw576QZ-ttNCu2SBM/view?usp=sharing)
+
 ## Similitud del Coseno
 
 Cuando se tiene la matriz dispersa, un poco mas digerible se utiliza la similitud del coseno haciendo 2 matrices de juegos donde se mida la similitud entre los datos o 
@@ -234,7 +248,9 @@ mas altos que generó el cálculo con el coseno,  organizando la similitud de ma
 
 ### Presentación
 
-Se presenta un video con la funcionalidad que genera el proyecto y un breve resúmen de los pasos surtidos
+Se presenta un video con la funcionalidad que genera el proyecto y un breve resúmen de los pasos surtidos.
+
+(https://drive.google.com/file/d/1wGHuSlnQVUOOQkZ9WtFbV5WbF0MuRzHf/view?usp=sharing)
 
 
 
