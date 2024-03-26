@@ -19,16 +19,15 @@ app = FastAPI()
 def developer_reviews_analysis(df, desarrolladora):
 
     '''
-    Esta función realiza un análisis de sentimientos de las reseñas para una desarrolladora específica.
-         
-    Args:
-        df (pd.DataFrame): DataFrame que contiene los datos.
-        desarrolladora (str): Nombre de la desarrolladora a analizar.
+             
+    Argumentos:
+        df (pd.DataFrame)
+        desarrolladora (str)
+        Con esta linea reviso que si esta funcionando la conexion  hoy 26.03.24
     
-    Returns:
-        dict: Un diccionario que contiene el resultado del análisis de sentimientos.
-            - La clave es el nombre de la desarrolladora.
-            - El valor es una lista con la cantidad de reseñas negativas y positivas.
+    Retorno:
+         Un diccionario que contiene el resultado del análisis de sentimientos.
+          
     '''
 
     filtered_data = df[df['developer'] == desarrolladora]
@@ -48,6 +47,7 @@ def developer_reviews_analysis(df, desarrolladora):
                     description=
                     """ <font color="black">
                     INSTRUCCIONES<br>
+                    Esta linea la pongo para verificar que la conexion si esta bien fecha 26.03.24
                     1. Haga clik en "Try it out".<br>
                     2. Ingrese el developer en el box abajo. Ejemplo: Valve <br>
                     3. Scrollear a "Response body" para ver cuantas reseñas positivas y negativas tuvo el desarrollador.
@@ -103,6 +103,7 @@ def userdata(df, user_id):
                     description=
                     """ <font color="black">
                     INSTRUCCIONES<br>
+                    Esta función realiza un análisis de sentimientos de las reseñas para una desarrolladora específica.
                     1. Haga clik en "Try it out".<br>
                     2. Ingrese un identificador de usuario (user_id) para Debe devolver cantidad de dinero gastado por el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.. Ejemplo: GamekungX <br>
                     3. Scrollear a "Response body" para ver el resultado.
