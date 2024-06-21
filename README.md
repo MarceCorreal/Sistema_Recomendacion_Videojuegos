@@ -2,7 +2,7 @@
 <img src="https://github.com/MarceCorreal/PI1_ML/blob/main/Assets/logo_steam%20(1).svg" />
 </p>
 
-<h1 align="center"><b>PROYECTO INDIVIDUAL 1 - MACHINE LEARNING - DPT07</b></h1>
+<h1 align="center"><b>MACHINE LEARNING</b></h1>
 
 <h1 align="center"><b>Sistemas de Recomendación de Videojuegos para usuarios plataforma STEAM</b></h1>
 
