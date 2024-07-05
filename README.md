@@ -10,8 +10,6 @@
 
 <p style="text-align: justify;">
 
-El presente proyecto se presenta como requisito para aprobar el módulo de laboratorios de Henry
-
 Consiste en desarrollar un sistema de recomendación de videojuegos de la tienda Steam, surtiendo todos los pasos que se deben tener en cuenta para esta misión.
 
 El proyecto se desarrolla en VPython - VisualCode Studio
