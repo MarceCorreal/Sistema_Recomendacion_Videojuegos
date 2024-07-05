@@ -12,7 +12,7 @@
 
 Consiste en desarrollar un sistema de recomendación de videojuegos de la tienda Steam, surtiendo todos los pasos que se deben tener en cuenta para esta misión.
 
-El proyecto se desarrolla en VPython - VisualCode Studio
+El proyecto se desarrolla en Python - VisualCode Studio
 
 El repositorio de Henry con las consignas se encentran en: https://github.com/soyHenry/PI_ML_OPS/blob/FT/Readme.md
 
